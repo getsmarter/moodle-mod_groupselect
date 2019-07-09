@@ -1,0 +1,24 @@
+{{=<% %>=}}
+<ion-row>
+<ion-toolbar>
+  <ion-title>Members</ion-title>
+</ion-toolbar>
+</ion-row>
+<ion-card *ngFor="let member of CONTENT_OTHERDATA.members">
+    <ion-item style="background-color: #f7f7f7;">
+        <ion-label style="margin: 0;">
+            <ion-grid>
+            	<ion-row>
+            		<ion-col>
+	                    <ion-avatar item-start>
+	                        <img src={{member.userpicturesrc}}>
+	                    </ion-avatar>            		
+            		</ion-col>
+            		<ion-col>
+            		{{ member.fullname }}
+            		</ion-col>
+            	</ion-row>
+        	</ion-grid>
+        </ion-label>
+    </ion-item>
+</ion-card>

@@ -1,0 +1,69 @@
+{{=<% %>=}}
+    <ion-card>
+        <button
+            ion-button full 
+            style="margin:0" 
+            core-site-plugins-new-content 
+            component="mod_groupselect"
+            method="add_group"
+            [args]="{cmid: <%cmid%>}" 
+            title="Create New Group">
+            Create New Group
+        </button>
+    </ion-card>
+
+<ion-card *ngFor="let group of CONTENT_OTHERDATA.groups"
+    core-site-plugins-new-content >
+    <!-- Header -->
+    <ion-item style="background-color: #f7f7f7;">
+        <ion-label style="margin: 0;">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  Name
+                    <ion-item text-wrap style="max-width: 82%; padding-left: 0; background-color: #f7f7f7">
+                    <!-- group title section -->
+                    <ion-row style="text-align: center">
+                        <h2>{{ group.groupname }}</h2>
+                    </ion-row>
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item text-wrap style="max-width: 82%; padding-left: 0; background-color: #f7f7f7">
+                    <!-- group title section -->
+                    <ion-row style="text-align: center">
+                        <h2>{{ group.description }}</h2>
+                    </ion-row>
+                    </ion-item>
+                </ion-col>
+                <ion-col text-center >
+                  Member Count
+                    <ion-item text-center style="max-width: 82%; padding-left: 0; background-color: #f7f7f7">
+                    <!-- group title section -->
+                    <ion-row text-center justify-content-center>
+                        <h2>{{ group.usercount }}</h2>
+                    </ion-row>
+                    </ion-item>
+                </ion-col>
+                <ion-col align-content-center>
+                    <ion-row text-center justify-content-center align-items-center>
+                        <button
+                            ion-button block 
+                            style="margin:0" 
+                            core-site-plugins-new-content 
+                            component="mod_groupselect"
+                            method="view_group"
+                            [args]="{'groupid': group.groupid, 'cmid': <%cmid%>}" 
+                            title="View Group">
+                            View
+                        </button>
+                    </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>        
+            <ion-row>
+
+            </ion-row>
+        </ion-label>
+    </ion-item>
+</ion-card>
