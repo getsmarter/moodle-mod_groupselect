@@ -15,13 +15,25 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Group self selection
+ * Add event handlers for the groupselect
  *
- * @package   mod_groupselect
- * @copyright 2018 HTW Chur Roger Barras
+ * @package    mod_groupselect
+ * @category   event
+ * @copyright  2018 HTW Chur Roger Barras
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
 
-$string['privacy:metadata'] = 'Das Plugin Freie Gruppeneinteilung speichert keine persönlichen Daten.';
+defined('MOODLE_INTERNAL') || die();
+
+$observers = array(
+
+    array(
+        'eventname' => '\core\event\user_enrolment_deleted',
+        'callback' => '\mod_groupselect\groupselect_observer::user_unenrolled',
+    ),
+    array(
+        'eventname' => '\core\event\group_deleted',
+        'callback' => '\mod_groupselect\groupselect_observer::group_deleted',
+    )
+);
